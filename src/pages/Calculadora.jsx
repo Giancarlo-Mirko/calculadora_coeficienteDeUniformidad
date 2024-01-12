@@ -92,6 +92,7 @@ export const Calculadora = () => {
           <h1>
             <span> Calculadora </span>
             <br />
+            <br />
             Coeficiente de Uniformidad
           </h1>
         </div>
