@@ -5,6 +5,24 @@ export const Calculadora = () => {
   const [valueInput, setValueInput] = useState('');
   const [numeros, setNumeros] = useState([]);
   const [result, setResult] = useState('');
+  const [clasificacion, setClasificacion] = useState('');
+  const [backgroundColor, setBackgroundColor] = useState('');
+
+  const clasificador = (value) => {
+    if (value > 90) {
+      setClasificacion('Excelente');
+      setBackgroundColor('#008037');
+    } else if (value > 80) {
+      setClasificacion('Buena');
+      setBackgroundColor('#7ED957');
+    } else if (value > 70) {
+      setClasificacion('Aceptable');
+      setBackgroundColor('#FFDE59');
+    } else {
+      setClasificacion('Inaceptable');
+      setBackgroundColor('#FF1616');
+    }
+  };
 
   const HandleChange = (event) => {
     setValueInput(event.target.value);
@@ -27,9 +45,10 @@ export const Calculadora = () => {
       );
       console.log('la sumatoria es:', sumatoria);
       const final = (1 - sumatoria / (n * promedio)) * 100;
-      setResult(final);
+      const finalRound = parseFloat(final.toFixed(2));
+      clasificador(finalRound);
+      setResult(`${finalRound} %`);
       setValueInput('');
-      console.log('clik');
       console.log(numeros);
     }
   };
@@ -48,6 +67,7 @@ export const Calculadora = () => {
     setNumeros([]);
     setValueInput('');
     setResult('');
+    setClasificacion('');
   };
 
   const handleSubmit = (event) => {
@@ -69,7 +89,11 @@ export const Calculadora = () => {
     <>
       <div className="container">
         <div>
-          <h1>Calculadora</h1>
+          <h1>
+            <span> Calculadora </span>
+            <br />
+            Coeficiente de Uniformidad
+          </h1>
         </div>
         <form action="" onSubmit={handleSubmit}>
           <input
@@ -91,7 +115,21 @@ export const Calculadora = () => {
             </button>
           </div>
         </form>
-        <h3>Resultado: {result}</h3>
+        <div className="clasificacionContainer">
+          <h3>Resultado: </h3>
+          <h3 className="result">{result}</h3>
+        </div>
+        <div className="clasificacionContainer">
+          <h3>Clasificación:</h3>
+          {clasificacion && (
+            <div
+              className="clasificacionResult"
+              style={{ backgroundColor: backgroundColor }}
+            >
+              <p>{clasificacion}</p>{' '}
+            </div>
+          )}
+        </div>
         <div>
           <h4>Datos:</h4>
           <ul>
