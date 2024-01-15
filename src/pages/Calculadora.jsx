@@ -98,7 +98,7 @@ export const Calculadora = () => {
         </div>
         <form action="" onSubmit={handleSubmit}>
           <input
-            type="text"
+            type="number"
             onChange={HandleChange}
             value={valueInput}
             // onKeyDown={handleKeyPress}
