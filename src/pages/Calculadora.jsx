@@ -103,6 +103,7 @@ export const Calculadora = () => {
             value={valueInput}
             // onKeyDown={handleKeyPress}
             placeholder="Ingresa dato"
+            step="0.001"
           />
           <div className="buttonContainer">
             <button type="button" onClick={agregarNumero}>
