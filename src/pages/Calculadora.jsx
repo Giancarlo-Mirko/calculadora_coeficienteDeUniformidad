@@ -86,7 +86,7 @@ export const Calculadora = () => {
   }, [numeros]);
 
   return (
-    <>
+    <main>
       <div className="container">
         <div>
           <h1>
@@ -141,6 +141,6 @@ export const Calculadora = () => {
           </ul>
         </div>
       </div>
-    </>
+    </main>
   );
 };
